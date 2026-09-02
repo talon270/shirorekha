@@ -1,0 +1,13 @@
+# Upstream source dumps — ~470 MB, all re-downloadable.
+# build/sources/README.md has the URL for every one of them.
+build/sources/*
+!build/sources/README.md
+
+# Timestamped backups taken before large edits to hind.html — local safety
+# net, not history. Git is the history once this is a repo.
+hind.backup-*.html
+
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
