@@ -26,10 +26,11 @@ self.addEventListener("install", function (e) {
 
 self.addEventListener("activate", function (e) {
   e.waitUntil(
+    /* Only this app's caches: every app on talon270.github.io shares one CacheStorage, and deleting the rest took their offline copies with it. */
     caches.keys()
       .then(function (keys) {
         return Promise.all(keys.map(function (k) {
-          return k === CACHE_NAME ? null : caches.delete(k);
+          return k === CACHE_NAME || k.indexOf("shirorekha-") !== 0 ? null : caches.delete(k);
         }));
       })
       .then(function () { return self.clients.claim(); })
